@@ -1,14 +1,11 @@
-// import { use } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
-
-// const booksPromise = fetch("/booksData.json").then((res) => res.json());
+import { BookContext } from "../../context/BookProvider";
 
 const BookDetails = () => {
   const { bookId: bookParamsId } = useParams();
 
-  //   const books = use(booksPromise);
   const books = useLoaderData();
-  console.log(books);
 
   const expectedBook = books.find(
     (book) => book.bookId === Number(bookParamsId),
@@ -27,10 +24,15 @@ const BookDetails = () => {
     yearOfPublishing,
   } = expectedBook;
 
+  const {handleMarkAsRead, storedBooks } = useContext(BookContext);
+
+
+
+
   return (
     <div className="card grid grid-cols-2 bg-base-100 shadow-sm container mx-auto my-25">
       <figure className="bg-gray-100 rounded-xl">
-        <img src={image} alt={bookName} className="h-100 "/>
+        <img src={image} alt={bookName} className="h-100 " />
       </figure>
       <div className="card-body space-y-3 ">
         <h2 className="card-title text-2xl">{bookName}</h2>
@@ -66,8 +68,13 @@ const BookDetails = () => {
             <span>{rating}</span>
           </div>
           <div className="flex items-center gap-2">
-            <button className="btn">Read</button>
-            <button className="btn btn-primary">Wishlist</button>
+            <button
+              className="btn"
+              onClick={() => handleMarkAsRead(expectedBook)}
+            >
+              Mark as Read
+            </button>
+            <button className="btn btn-primary">Add to Wishlist</button>
           </div>
         </div>
       </div>
