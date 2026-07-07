@@ -18,7 +18,7 @@ const ErrorPage = () => {
 
             {/* soft gradient glow behind the number */}
             <div
-                className="ep-glow pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] rounded-full opacity-40 blur-[110px]"
+                className="ep-glow pointer-events-none absolute left-1/2 top-1/2 h-105 w-105 rounded-full opacity-40 blur-[110px]"
                 style={{
                     background: 'radial-gradient(circle, #7c6fff 0%, #5b8def 45%, transparent 70%)',
                 }}
@@ -29,7 +29,7 @@ const ErrorPage = () => {
                     ERROR 404
                 </span>
 
-                <h1 className="bg-gradient-to-b from-white to-[#8a8f98] bg-clip-text text-[112px] font-extrabold leading-none tracking-tight text-transparent sm:text-[140px]">
+                <h1 className="bg-linear-to-b from-white to-[#8a8f98] bg-clip-text text-[112px] font-extrabold leading-none tracking-tight text-transparent sm:text-[140px]">
                     404
                 </h1>
 
@@ -44,13 +44,13 @@ const ErrorPage = () => {
                 <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                     <a
                         href="/"
-                        className="inline-flex items-center rounded-lg bg-white px-5 py-3 text-sm font-medium text-[#0b0b0f] transition-transform duration-150 hover:bg-[#e5e5e5] active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        className="inline-flex items-center rounded-lg bg-white px-5 py-3 text-sm font-medium text-[#0b0b0f] transition-transform duration-150 hover:bg-[#e5e5e5] active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                         Back to home
                     </a>
                     <button
                         onClick={() => window.history.back()}
-                        className="inline-flex items-center rounded-lg border border-white/10 bg-transparent px-5 py-3 text-sm font-medium text-[#f5f5f7] transition-colors duration-150 hover:border-white/25 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        className="inline-flex items-center rounded-lg border border-white/10 bg-transparent px-5 py-3 text-sm font-medium text-[#f5f5f7] transition-colors duration-150 hover:border-white/25 active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                         Go back
                     </button>
