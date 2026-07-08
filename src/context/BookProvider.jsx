@@ -1,11 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { addReadListToLocalDB, addWishListToLocalDB, getAllReadListFromLocalDB, getAllWishListFromLocalDB } from "../utilities/localDB";
 
 export const BookContext = createContext();
 
 const BookProvider = ({ children }) => {
-  const [readList, setReadList] = useState([]);
-  const [wishList, setWithList] = useState([]);
+  const [readList, setReadList] = useState(() => getAllReadListFromLocalDB());
+  const [wishList, setWithList] = useState(() => getAllWishListFromLocalDB());
+
 
   const handleMarkAsRead = (currentBook) => {
     // step 1: store book id or book object
@@ -13,6 +15,8 @@ const BookProvider = ({ children }) => {
     // step 3: array or collection
     // step 4: if the book is already exist then show a alert or toast
     // step 5: if not then add the book in the array or collection
+
+    addReadListToLocalDB(currentBook)
 
     const isExistBook = readList.find(
       (book) => book.bookId == currentBook.bookId,
@@ -33,6 +37,8 @@ const BookProvider = ({ children }) => {
     // step 3: array or collection
     // step 4: if the book is already exist then show a alert or toast
     // step 5: if not then add the book in the array or collection
+
+    addWishListToLocalDB(currentBook)
 
     const isExistInReadList = readList.find(
       (book) => book.bookId === currentBook.bookId,
